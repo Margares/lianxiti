@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include<stdlib.h>
+typedef struct pe{
+	int num;
+	int sa;
+	struct pe * next;
+}per;
+per *creat (int n){
+	per *head,*p;
+	int i;
+	head=(per *)malloc(sizeof per);
+	head->next=NULL;
+	p=head;
+	for(i=0;i<n;i++){
+		scanf("%d %d",&p->num,&p->sa);
+		p->next=new(per);
+		p->next->next=NULL;
+			p=p->next;
+	}
+	p->next=NULL;
+	return(head);
+}
+int list( per *p){
+	printf("%d %d",p->num,p->sa);
+	return 0;
+}
+int main (){
+	int n,i;
+	per *p1;
+	scanf_s ("%d",&n);
+	p1=creat(n);
+	while(p1!=NULL){
+		list(p1+i);
+		p1=p1+i;
+	}
+return 0;
+}
