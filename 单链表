@@ -9,19 +9,24 @@ per *creat (int n){//创建新链表
 	per *head,*p;
 	int i;
 	head=(per *)malloc (sizeof (per));
-	head=NULL;
+	head->next=NULL;
 	p=head;
 	for(i=0;i<n;i++){
+		p->next=(per *)malloc (sizeof (per));
 		scanf("%d %d",&p->num,&p->sa);
-		p->next=new(per);
-		p->next->next=NULL;
 		p=p->next;
 	}
-	p->next=NULL;
+	p=NULL;
 	return(head);
 }
 int list( per *p){//输出链表 
-	printf("%d %d",p->num,p->sa);
+	per *q;
+	q=p;
+	while (q){
+		printf("%d %d",q->num,q->sa);
+		q=q->next;
+		printf("\n");
+	}
 	return 0;
 }
 int main (){
@@ -29,10 +34,7 @@ int main (){
 	per *p1;
 	scanf ("%d",&n);
 	p1=creat(n);
-	while(p1!=NULL){
-		list(p1++);
-	}
+	list(p1);
 return 0;
 }
-
-//仍然有问题，只能输入一行
+//现在的问题是会多输出一组数据，挺迷的
